@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-php
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: app-php
+  template:
+    metadata:
+      labels:
+        app: app-php
+    spec:
+      containers:
+      - name: app-php
+        image: gutofunny/app-dio:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
